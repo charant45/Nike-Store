@@ -1,17 +1,86 @@
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <title>Nike Store</title>
 </head>
 
 <body>
+    <!-- Cart Sidebar - Moved to body level -->
+    <div class="cartSidebar">
+        <div class="cartHeader">
+            <h2>Your Cart</h2>
+            <button class="cartClose"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="cartItems">
+            <!-- Cart items will be added here dynamically -->
+        </div>
+        <div class="cartFooter">
+            <div class="cartTotalContainer">
+                <span>Total:</span>
+                <span class="cartTotal">$0.00</span>
+            </div>
+            <button class="checkoutBtn">Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <!-- Payment Modal -->
+    <div class="payment">
+        <h1 class="payTitle">Checkout</h1>
+        <form class="paymentForm">
+            <div class="formSection">
+                <h2>Personal Information</h2>
+                <label for="fullName">Full Name</label>
+                <input type="text" id="fullName" placeholder="John Doe" class="payInput" required>
+
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="john@example.com" class="payInput" required>
+
+                <label for="phone">Phone Number</label>
+                <input type="text" id="phone" placeholder="+1 234 5678" class="payInput" required>
+
+                <label for="address">Shipping Address</label>
+                <input type="text" id="address" placeholder="123 Main St, City, Country" class="payInput" required>
+            </div>
+
+            <div class="formSection">
+                <h2>Payment Information</h2>
+                <div class="cardIcons">
+                    <i class="fab fa-cc-visa fa-2x cardIcon"></i>
+                    <i class="fab fa-cc-mastercard fa-2x cardIcon"></i>
+                    <i class="fab fa-cc-amex fa-2x cardIcon"></i>
+                    <i class="fab fa-cc-paypal fa-2x cardIcon"></i>
+                </div>
+
+                <label for="nameOnCard">Name on Card</label>
+                <input type="text" id="nameOnCard" placeholder="John Doe" class="payInput" required>
+
+                <label for="cardNumber">Card Number</label>
+                <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" class="payInput" required>
+
+                <div class="cardInfo">
+                    <div>
+                        <label for="cardExpiry">Expiry Date</label>
+                        <input type="text" id="cardExpiry" placeholder="MM/YY" class="payInput sm" required>
+                    </div>
+                    <div>
+                        <label for="cardCvc">CVC</label>
+                        <input type="text" id="cardCvc" placeholder="123" class="payInput sm" required>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="payButton">Complete Payment</button>
+        </form>
+        <span class="close"><i class="fas fa-times"></i></span>
+    </div>
+
     <nav id="nav">
         <div class="navTop">
             <div class="navItem">
@@ -19,12 +88,18 @@
             </div>
             <div class="navItem">
                 <div class="search">
-                    <input type="text" placeholder="Search..." class="searchInput">
-                    <img src="./img/search.png" width="20" height="20" alt="" class="searchIcon">
+                    <input type="text" placeholder="Search..." class="searchInput" id="searchInput">
+                    <img src="./img/search.png" width="20" height="20" alt="" class="searchIcon" id="searchIcon">
                 </div>
             </div>
             <div class="navItem">
-                <span class="limitedOffer">Limited Offer!</span>
+                <div class="cartIconContainer">
+                    <i class="fas fa-shopping-cart cartIcon"></i>
+                    <span class="cartItemCount">0</span>
+                </div>
+                <a href="#specialOffers" class="limitedOfferLink">
+                    <span class="limitedOffer">Limited Offer!</span>
+                </a>
             </div>
         </div>
         <div class="navBottom">
@@ -37,54 +112,10 @@
     </nav>
     <div class="slider">
         <div class="sliderWrapper">
-            <div class="sliderItem">
-                <img src="./img/air.png" alt="" class="sliderImg">
-                <div class="sliderBg"></div>
-                <h1 class="sliderTitle">AIR FORCE</br> NEW</br> SEASON</h1>
-                <h2 class="sliderPrice">$119</h2>
-                <a href="#product">
-                    <button class="buyButton">BUY NOW!</button>
-                </a>
-            </div>
-            <div class="sliderItem">
-                <img src="./img/jordan.png" alt="" class="sliderImg">
-                <div class="sliderBg"></div>
-                <h1 class="sliderTitle">AIR JORDAN</br> NEW</br> SEASON</h1>
-                <h2 class="sliderPrice">$149</h2>
-                <a href="#product">
-                    <button class="buyButton">BUY NOW!</button>
-                </a>
-            </div>
-            <div class="sliderItem">
-                <img src="./img/blazer.png" alt="" class="sliderImg">
-                <div class="sliderBg"></div>
-                <h1 class="sliderTitle">BLAZER</br> NEW</br> SEASON</h1>
-                <h2 class="sliderPrice">$109</h2>
-                <a href="#product">
-                    <button class="buyButton">BUY NOW!</button>
-                </a>
-            </div>
-            <div class="sliderItem">
-                <img src="./img/crater.png" alt="" class="sliderImg">
-                <div class="sliderBg"></div>
-                <h1 class="sliderTitle">CRATER</br> NEW</br> SEASON</h1>
-                <h2 class="sliderPrice">$129</h2>
-                <a href="#product">
-                    <button class="buyButton">BUY NOW!</button>
-                </a>
-            </div>
-            <div class="sliderItem">
-                <img src="./img/hippie.png" alt="" class="sliderImg">
-                <div class="sliderBg"></div>
-                <h1 class="sliderTitle">HIPPIE</br> NEW</br> SEASON</h1>
-                <h2 class="sliderPrice">$99</h2>
-                <a href="#product">
-                    <button class="buyButton">BUY NOW!</button>
-                </a>
-            </div>
+            <!-- Slider items will be generated dynamically -->
         </div>
     </div>
-   
+
     <div class="features">
         <div class="feature">
             <img src="./img/shipping.png" alt="" class="featureIcon">
@@ -108,14 +139,69 @@
         </div>
     </div>
 
+    <!-- Special Offers Section -->
+    <div class="specialOffers" id="specialOffers">
+        <h2 class="offersTitle">SPECIAL OFFERS</h2>
+        <div class="offersContainer">
+            <div class="offerItem">
+                <span class="discountBadge">-30%</span>
+                <img src="./img/air.png" alt="Air Force" class="offerImg">
+                <div class="offerInfo">
+                    <h3>AIR FORCE</h3>
+                    <div class="offerPrice">
+                        <span class="originalPrice">$119</span>
+                        <span class="salePrice">$83</span>
+                    </div>
+                    <button class="offerButton">ADD TO CART</button>
+                </div>
+            </div>
+            <div class="offerItem">
+                <span class="discountBadge">-25%</span>
+                <img src="./img/jordan.png" alt="Air Jordan" class="offerImg">
+                <div class="offerInfo">
+                    <h3>AIR JORDAN</h3>
+                    <div class="offerPrice">
+                        <span class="originalPrice">$149</span>
+                        <span class="salePrice">$112</span>
+                    </div>
+                    <button class="offerButton">ADD TO CART</button>
+                </div>
+            </div>
+            <div class="offerItem">
+                <span class="discountBadge">-40%</span>
+                <img src="./img/crater.png" alt="Crater" class="offerImg">
+                <div class="offerInfo">
+                    <h3>CRATER</h3>
+                    <div class="offerPrice">
+                        <span class="originalPrice">$129</span>
+                        <span class="salePrice">$77</span>
+                    </div>
+                    <button class="offerButton">ADD TO CART</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="product" id="product">
-        <img src="./img/air.png" alt="" class="productImg">
+        <div class="productImgContainer">
+            <img src="./img/air.png" alt="" class="productImg">
+
+            <!-- Zoom lens element -->
+            <div class="img-zoom-lens"></div>
+
+            <!-- Zoom result container -->
+            <div class="img-zoom-result"></div>
+
+            <div class="zoomControls">
+                <button class="zoomBtn zoomOut" disabled><i class="fas fa-minus"></i></button>
+                <button class="zoomBtn zoomIn"><i class="fas fa-plus"></i></button>
+            </div>
+        </div>
+
         <div class="productDetails">
             <h1 class="productTitle">AIR FORCE</h1>
-            <h2 class="productPrice">$199</h2>
-            <p class="productDesc">The company itself is a great company to pursue the impal adipisicing of the company. Others must be assumed
-                of pain
-                I will open something with pain and wisdom.
+            <h2 class="productPrice">$119</h2>
+            <p class="productDesc">The company itself is a great company to pursue the impal adipisicing of the company. Others must be assumed of pain I will open something with pain and wisdom.
             </p>
             <div class="colors">
                 <div class="color"></div>
@@ -126,52 +212,27 @@
                 <div class="size">43</div>
                 <div class="size">44</div>
             </div>
-            <button class="productButton">BUY NOW!</button>
-        </div>
-        <div class="payment">
-            <h1 class="payTitle">Personal Information</h1>
-            <label>Name and Surname</label>
-            <input type="text" placeholder="John Doe" class="payInput">
-            <label>Phone Number</label>
-            <input type="text" placeholder="+1 234 5678" class="payInput">
-            <label>Address</label>
-            <input type="text" placeholder="Elton St 21 22-145" class="payInput">
-            <h1 class="payTitle">Card Information</h1>
-            <div class="cardIcons">
-                <img src="./img/visa.png" width="40" alt="" class="cardIcon">
-                <img src="./img/master.png" alt="" width="40" class="cardIcon">
-            </div>
-            <input type="password" class="payInput" placeholder="Card Number">
-            <div class="cardInfo">
-                <input type="text" placeholder="mm" class="payInput sm">
-                <input type="text" placeholder="yyyy" class="payInput sm">
-                <input type="text" placeholder="cvv" class="payInput sm">
-            </div>
-            <button class="payButton">Checkout!</button>
-            <span class="close">X</span>
+            <button class="productButton">ADD TO CART</button>
         </div>
     </div>
+
     <div class="gallery">
         <div class="galleryItem">
             <h1 class="galleryTitle">Be Yourself!</h1>
-            <img src="https://images.pexels.com/photos/9295809/pexels-photo-9295809.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-                alt="" class="galleryImg">
+            <img src="https://images.pexels.com/photos/9295809/pexels-photo-9295809.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500" alt="" class="galleryImg">
         </div>
         <div class="galleryItem">
-            <img src="https://images.pexels.com/photos/1040427/pexels-photo-1040427.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-                alt="" class="galleryImg">
+            <img src="https://images.pexels.com/photos/1040427/pexels-photo-1040427.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500" alt="" class="galleryImg">
             <h1 class="galleryTitle">This is the First Day of Your New Life</h1>
         </div>
         <div class="galleryItem">
             <h1 class="galleryTitle">Just Do it!</h1>
-            <img src="https://images.pexels.com/photos/7856965/pexels-photo-7856965.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-                alt="" class="galleryImg">
+            <img src="https://images.pexels.com/photos/7856965/pexels-photo-7856965.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500" alt="" class="galleryImg">
         </div>
     </div>
     <div class="newSeason">
         <div class="nsItem">
-            <img src="https://images.pexels.com/photos/4753986/pexels-photo-4753986.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-                alt="" class="nsImg">
+            <img src="https://images.pexels.com/photos/4753986/pexels-photo-4753986.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500" alt="" class="nsImg">
         </div>
         <div class="nsItem">
             <h3 class="nsTitleSm">WINTER NEW ARRIVALS</h3>
@@ -182,8 +243,7 @@
             </a>
         </div>
         <div class="nsItem">
-            <img src="https://images.pexels.com/photos/7856965/pexels-photo-7856965.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-                alt="" class="nsImg">
+            <img src="https://images.pexels.com/photos/7856965/pexels-photo-7856965.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500" alt="" class="nsImg">
         </div>
     </div>
     <footer>
